@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <h1>Welcome! I write things.</h1>
-
-
-  <a href="#"><h3>First Post</h3></a>
-    <p>Photo booth crucifix hashtag, tacos dreamcatcher you probably haven't heard of them bicycle rights hoodie ramps. Irony pour-over everyday carry, tote bag viral kinfolk authentic cronut knausgaard lomo whatever. Chicharrones ramps pug, microdosing retro yuccie mustache church-key chia seitan ugh. Vegan four dollar toast thundercats, intelligentsia skateboard ethical bicycle rights hella knausgaard readymade keytar master cleanse beard. Cardigan celiac affogato pour-over. Green juice XOXO tilde swag cardigan. Post-ironic single-origin coffee bespoke, knausgaard fingerstache quinoa listicle viral venmo salvia crucifix pickled bushwick.</p>
-
-  <a href="#"><h3>Second Post</h3></a>
-    <p>Neutra lumbersexual tote bag hella, post-ironic fixie keffiyeh. Typewriter ugh shoreditch PBRB, occupy mumblecore mustache etsy readymade beard bitters crucifix. Scenester banjo echo park pug squid +1 cray migas tofu gochujang, roof party forage. Kitsch crucifix shoreditch, fap sustainable celiac dreamcatcher. Echo park neutra blue bottle humblebrag, gastropub four dollar toast hammock jean shorts selfies flannel bicycle rights. Narwhal banh mi salvia mustache mixtape, gochujang sriracha. Taxidermy blog austin aesthetic.</p>
-
-  <a href="#"><h3>Third Post</h3></a>
-    <p>Microdosing swag lumbersexual messenger bag, jean shorts yr post-ironic bicycle rights literally next level stumptown YOLO marfa. Shoreditch vegan fixie selvage. Raw denim artisan you probably haven't heard of them, post-ironic pabst organic franzen neutra tilde ramps. IPhone pitchfork ethical lo-fi. Gentrify ennui flannel blue bottle, 3 wolf moon PBR&B ramps shabby chic. Kickstarter kinfolk cronut squid iPhone small batch typewriter, echo park tumblr. YOLO readymade gochujang meh iPhone.</p>
-    </body>
+    <header>
+      <center><h1>Aileen's Django Girls Blog</h1></center>
+    </header>
+    <div class="container">
+      <h1>Welcome! I write things.</h1>
+      <h2>Recent Posts:</h2>
+      <ul>
+        {% for post in posts %}
+          <div class="post-tile">
+            <h3>{{ post.title }}</h3>
+            <h5>Published: {{ post.publish_date }}</h5>
+            <p>{{ post.text }}</p>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
 </html>
