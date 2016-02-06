@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Aileen's Django Girls Blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  </head>
-  <body>
-    <header>
-      <center><h1>Aileen's Django Girls Blog</h1></center>
-    </header>
-    <div class="container">
-      <h1>Welcome! I write things.</h1>
-      <h2>Recent Posts:</h2>
-      <ul>
-        {% for post in posts %}
-          <div class="post-tile">
-            <h3>{{ post.title }}</h3>
-            <h5>Published: {{ post.publish_date }}</h5>
-            <p>{{ post.text }}</p>
-        </div>
-        {% endfor %}
-      </ul>
-    </div>
-  </body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Welcome! I write things.</h1>
+    <h2>Recent Posts:</h2>
+    <ul>
+      {% for post in posts %}
+        <div class="post-tile">
+          <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+          <h5>Published: {{ post.publish_date }}</h5>
+          <p>{{ post.text|truncatewords:50}}</p>
+      </div>
+      {% endfor %}
+    </ul>
+{% endblock %}
