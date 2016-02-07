@@ -19,7 +19,7 @@
   {% endif %}
   <form action="{% url 'post_like' pk=post.pk %}" method="post">
     {% csrf_token %}
-    <button type="submit" name="button">Like</button>
+    <button type="submit" name="button" class="btn btn-info">Like</button>
   </form>
 
   <div class="post-text">
