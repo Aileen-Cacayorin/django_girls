@@ -17,15 +17,16 @@
   {% if post.likes != 0 %}
     <h3>Likes: {{ post.likes }}</h3>
   {% endif %}
+  <form action="{% url 'post_like' pk=post.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit" name="button">Like</button>
+  </form>
 
   <div class="post-text">
     <p>{{ post.text|linebreaks }}</p>
   </div>
 
-  <form action="{% url 'post_like' pk=post.pk %}" method="post">
-    {% csrf_token %}
-    <button type="submit" name="button">Like</button>
-  </form>
+
 </div>
 
 {% endblock %}
