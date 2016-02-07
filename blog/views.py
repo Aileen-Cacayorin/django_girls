@@ -29,7 +29,7 @@ def post_new(request):
         return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk) #retrieves post
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -41,3 +41,10 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
         return render(request, 'blog/post_edit.html', {'form': form})
+
+def post_like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        post.likes += 1
+        post.save()
+    return redirect('post_detail', pk=post.pk)
